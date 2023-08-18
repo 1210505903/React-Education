@@ -1,22 +1,21 @@
-import React from "react"; 
+import React from "react";
 import ReactDOM from "react-dom";
 
+import Card from './componets/Card';
 
-/*
-class App2 extends React.Component{
-    render(){
-        return <h1>Benim Adım Yusuff222 </h1>;
-    }
-}*/
 
-const names = ["Nilay","Ceren","Emre"]
-
-function App(){
-    return(
+const App = (props) => {
+    return (
         <div>
-            {names.map(name=> (<h1>{name}</h1>))}
+            <div class="card-group">
+
+                <Card cardTitle="Galatasaray"/>
+                <Card cardTitle="UltraAslan"/>
+                <Card cardTitle="Cimbo m"/>
+
+
+            </div>
         </div>);
 }
 
-ReactDOM.render( <App/>,document.getElementById("root"));
-   
+ReactDOM.render(<App />, document.getElementById("root"));
