@@ -1,9 +1,7 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-    state = {
-        searchQuery: ""
-    }
+    
     handleFormSumbit = (event)=>{
         event.preventDefault();
     }
@@ -12,8 +10,8 @@ class SearchBar extends React.Component {
         return (
             <form onSubmit={this.handleFormSumbit}>
                 <div className="form-row mb-5">
-                    <input onChange={(event) => this.setState({ searchQuery: event.target.value })} type="text" className="form-control" 
-                    placeholder="Search a Movie" value={this.state.searchQuery} />
+                    <input onChange={this.props.searhMovieProp} type="text" className="form-control" 
+                    placeholder="Search a Movie" />
                 </div>
             </form>
         )

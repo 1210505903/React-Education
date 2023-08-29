@@ -23,8 +23,29 @@ class App extends React.Component {
             "rating": 7.9,
             "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
             "imageURL": "https://img.freepik.com/premium-psd/poster-design-photo-manipulation-template_528542-1009.jpg?w=740"
+        },
+        {
+            "id": 4,
+            "name": "Superman",
+            "rating": 7.3,
+            "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+            "imageURL": "https://img.freepik.com/premium-photo/movie-poster-design_841014-8788.jpg?w=740"
+        }, {
+            "id": 5,
+            "name": "The Witcher",
+            "rating": 6.8,
+            "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+            "imageURL": "https://img.freepik.com/free-vector/professional-suspense-movie-poster_742173-3470.jpg?w=826&t=st=1692963518~exp=1692964118~hmac=db800847863e0f7da7f02717b25506efc92458b8858e5a228eef0f7f41a9b981"
+        }, {
+
+            "id": 6,
+            "name": "Breaking Bad",
+            "rating": 7.9,
+            "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+            "imageURL": "https://img.freepik.com/free-psd/world-forest-day-poster-template_23-2148899237.jpg?w=826&t=st=1692963839~exp=1692964439~hmac=dac8580730698edacc79b4e1b0be70df6cf4df9dab6e5fdbe4a495a0307a5d36"
         }
-        ]
+        ],
+        searchQuery: ""
     }
 
     deleteMovie =(movie) =>{
@@ -35,18 +56,26 @@ class App extends React.Component {
             movies: newMovieList
         })
     }
-
+    searchMovie =(event)=>{
+        //console.log(event.target.value);
+        this.setState({searchQuery:event.target.value}) 
+    }
     render() {
-
+        let filteredMovies = this.state.movies.filter(
+            (movie) =>  {
+                return movie.name.toLowerCase().indexOf(this.state.searchQuery.toLocaleLowerCase())!==-1
+            }
+        )
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-1g-12">
-                        <SearchBar />
+                        <SearchBar 
+                        searhMovieProp={this.searchMovie}/>
                     </div>
                 </div>
                 <MoveList 
-                    movies = {this.state.movies}
+                    movies = {filteredMovies}
                     deleteMovieProp = {this.deleteMovie} />
             </div>
         )
