@@ -48,35 +48,35 @@ class App extends React.Component {
         searchQuery: ""
     }
 
-    deleteMovie =(movie) =>{
+    deleteMovie = (movie) => {
         const newMovieList = this.state.movies.filter(
-            m => m.id!== movie.id
+            m => m.id !== movie.id
         );
         this.setState({
             movies: newMovieList
         })
     }
-    searchMovie =(event)=>{
+    searchMovie = (event) => {
         //console.log(event.target.value);
-        this.setState({searchQuery:event.target.value}) 
+        this.setState({ searchQuery: event.target.value })
     }
     render() {
         let filteredMovies = this.state.movies.filter(
-            (movie) =>  {
-                return movie.name.toLowerCase().indexOf(this.state.searchQuery.toLocaleLowerCase())!==-1
+            (movie) => {
+                return movie.name.toLowerCase().indexOf(this.state.searchQuery.toLocaleLowerCase()) !== -1
             }
         )
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-1g-12">
-                        <SearchBar 
-                        searhMovieProp={this.searchMovie}/>
+                        <SearchBar
+                            searhMovieProp={this.searchMovie} />
                     </div>
                 </div>
-                <MoveList 
-                    movies = {filteredMovies}
-                    deleteMovieProp = {this.deleteMovie} />
+                <MoveList
+                    movies={filteredMovies}
+                    deleteMovieProp={this.deleteMovie} />
             </div>
         )
 
